@@ -3,10 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Person and Employee Classes</title>
+  <title>Person and Employee</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0066cc;
+    }
+
+    .output {
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #ffffff;
+      max-width: 600px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .output p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
-  <h1>Check the Console for Output</h1>
+  <h1>Person and Employee Details</h1>
+  <div class="output" id="output"></div>
+
   <script>
     // Define the Person class
     class Person {
@@ -17,7 +48,7 @@
 
       // Method to greet
       greet() {
-        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+        return `Hello, my name is ${this.name}, I am ${this.age} years old.`;
       }
     }
 
@@ -31,20 +62,21 @@
 
       // Method for employee-specific greeting
       jobGreet() {
-        console.log(
-          `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
-        );
+        return `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`;
       }
     }
 
     // Example Test Case
-    // Create an instance of Person
     const person = new Person("Alice", 25);
-    person.greet(); // Expected: "Hello, my name is Alice, I am 25 years old."
-
-    // Create an instance of Employee
     const employee = new Employee("Bob", 30, "Manager");
-    employee.jobGreet(); // Expected: "Hello, my name is Bob, I am 30 years old, and my job title is Manager."
+
+    // Display output on the webpage
+    const outputDiv = document.getElementById("output");
+    outputDiv.innerHTML = `
+      <p>${person.greet()}</p>
+      <p>${employee.jobGreet()}</p>
+    `;
   </script>
 </body>
 </html>
+
