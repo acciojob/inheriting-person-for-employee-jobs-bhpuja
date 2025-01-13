@@ -1,16 +1,50 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Person and Employee Classes</title>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <h1>Check the Console for Output</h1>
+  <script>
+    // Define the Person class
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
 
+      // Method to greet
+      greet() {
+        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+      }
+    }
+
+    // Define the Employee class, inheriting from Person
+    class Employee extends Person {
+      constructor(name, age, jobTitle) {
+        // Call the parent class constructor
+        super(name, age);
+        this.jobTitle = jobTitle;
+      }
+
+      // Method for employee-specific greeting
+      jobGreet() {
+        console.log(
+          `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
+        );
+      }
+    }
+
+    // Example Test Case
+    // Create an instance of Person
+    const person = new Person("Alice", 25);
+    person.greet(); // Expected: "Hello, my name is Alice, I am 25 years old."
+
+    // Create an instance of Employee
+    const employee = new Employee("Bob", 30, "Manager");
+    employee.jobGreet(); // Expected: "Hello, my name is Bob, I am 30 years old, and my job title is Manager."
+  </script>
 </body>
-
 </html>
