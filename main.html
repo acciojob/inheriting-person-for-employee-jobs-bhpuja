@@ -1,82 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Person and Employee</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f8ff;
-      color: #333;
-      margin: 0;
-      padding: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inheritance: Person and Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
 
-    h1 {
-      text-align: center;
-      color: #0066cc;
-    }
-
-    .output {
-      margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 10px;
-      background-color: #ffffff;
-      max-width: 600px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .output p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-  </style>
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <h1>Person and Employee Details</h1>
-  <div class="output" id="output"></div>
 
-  <script>
-    // Define the Person class
-    class Person {
-      constructor(name, age) {
-        this.name = name;
-        this.age = age;
-      }
+    <h1>Inheriting Person for Employee Jobs</h1>
 
-      // Method to greet
-      greet() {
-        return `Hello, my name is ${this.name}, I am ${this.age} years old.`;
-      }
-    }
+    <div class="result" id="result">
+        <!-- This will display the result in the HTML -->
+    </div>
 
-    // Define the Employee class, inheriting from Person
-    class Employee extends Person {
-      constructor(name, age, jobTitle) {
-        // Call the parent class constructor
-        super(name, age);
-        this.jobTitle = jobTitle;
-      }
+    <script>
+        // Create the Person class
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
 
-      // Method for employee-specific greeting
-      jobGreet() {
-        return `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`;
-      }
-    }
+            greet() {
+                // This method prints the greeting message for Person
+                console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+            }
+        }
 
-    // Example Test Case
-    const person = new Person("Alice", 25);
-    const employee = new Employee("Bob", 30, "Manager");
+        // Create the Employee class that inherits from Person
+        class Employee extends Person {
+            constructor(name, age, jobTitle) {
+                super(name, age); // Call the constructor of the Person class
+                this.jobTitle = jobTitle;
+            }
 
-    // Display output on the webpage
-    const outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = `
-      <p>${person.greet()}</p>
-      <p>${employee.jobGreet()}</p>
-    `;
-  </script>
+            jobGreet() {
+                // This method prints the greeting message for Employee
+                console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+            }
+        }
+
+        // Create an instance of Person
+        const person = new Person("Alice", 25);
+        person.greet(); // Expected output: "Hello, my name is Alice, I am 25 years old."
+
+        // Create an instance of Employee
+        const employee = new Employee("Bob", 30, "Manager");
+        employee.jobGreet(); // Expected output: "Hello, my name is Bob, I am 30 years old, and my job title is Manager."
+
+        // Display a message on the webpage
+        document.getElementById('result').textContent = 'Check the console for the output!';
+    </script>
+
 </body>
 </html>
+
 
