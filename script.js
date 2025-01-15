@@ -1,4 +1,5 @@
 // complete this js code
+// 
 // Define the Person class
 class Person {
   constructor(name, age) {
@@ -7,7 +8,7 @@ class Person {
   }
 
   greet() {
-    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+    return `Hello, my name is ${this.name}, I am ${this.age} years old.`;
   }
 }
 
@@ -19,17 +20,32 @@ class Employee extends Person {
   }
 
   jobGreet() {
-    console.log(
-      `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`
-    );
+    return `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`;
   }
 }
 
-// Example Test Cases
-// Testing Person class
-const person1 = new Person("Alice", 25);
-person1.greet(); // Expected: Hello, my name is Alice, I am 25 years old.
+// Add event listeners for creating Person and Employee
+document.getElementById("create-person").addEventListener("click", () => {
+  const name = document.getElementById("person-name").value;
+  const age = document.getElementById("person-age").value;
 
-// Testing Employee class
-const employee1 = new Employee("Bob", 30, "Manager");
-employee1.jobGreet(); // Expected: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
+  if (name && age) {
+    const person = new Person(name, parseInt(age));
+    document.getElementById("person-output").textContent = person.greet();
+  } else {
+    alert("Please enter both name and age for the person.");
+  }
+});
+
+document.getElementById("create-employee").addEventListener("click", () => {
+  const name = document.getElementById("employee-name").value;
+  const age = document.getElementById("employee-age").value;
+  const jobTitle = document.getElementById("employee-jobTitle").value;
+
+  if (name && age && jobTitle) {
+    const employee = new Employee(name, parseInt(age), jobTitle);
+    document.getElementById("employee-output").textContent = employee.jobGreet();
+  } else {
+    alert("Please enter name, age, and job title for the employee.");
+  }
+});
