@@ -1,5 +1,3 @@
-// complete this js code
-// 
 // Define the Person class
 class Person {
   constructor(name, age) {
@@ -12,10 +10,10 @@ class Person {
   }
 }
 
-// Define the Employee class that inherits from Person
+// Define the Employee class (inherits from Person)
 class Employee extends Person {
   constructor(name, age, jobTitle) {
-    super(name, age); // Call the parent class constructor
+    super(name, age); // Call the Person constructor
     this.jobTitle = jobTitle;
   }
 
@@ -24,28 +22,30 @@ class Employee extends Person {
   }
 }
 
-// Add event listeners for creating Person and Employee
-document.getElementById("create-person").addEventListener("click", () => {
-  const name = document.getElementById("person-name").value;
+// Function to test Person
+document.getElementById("test-person").addEventListener("click", () => {
+  const name = document.getElementById("person-name").value.trim();
   const age = document.getElementById("person-age").value;
 
   if (name && age) {
-    const person = new Person(name, parseInt(age));
+    const person = new Person(name, parseInt(age, 10));
     document.getElementById("person-output").textContent = person.greet();
   } else {
-    alert("Please enter both name and age for the person.");
+    document.getElementById("person-output").textContent = "Please enter a valid name and age.";
   }
 });
 
-document.getElementById("create-employee").addEventListener("click", () => {
-  const name = document.getElementById("employee-name").value;
+// Function to test Employee
+document.getElementById("test-employee").addEventListener("click", () => {
+  const name = document.getElementById("employee-name").value.trim();
   const age = document.getElementById("employee-age").value;
-  const jobTitle = document.getElementById("employee-jobTitle").value;
+  const jobTitle = document.getElementById("employee-jobTitle").value.trim();
 
   if (name && age && jobTitle) {
-    const employee = new Employee(name, parseInt(age), jobTitle);
+    const employee = new Employee(name, parseInt(age, 10), jobTitle);
     document.getElementById("employee-output").textContent = employee.jobGreet();
   } else {
-    alert("Please enter name, age, and job title for the employee.");
+    document.getElementById("employee-output").textContent = "Please enter valid name, age, and job title.";
   }
 });
+
